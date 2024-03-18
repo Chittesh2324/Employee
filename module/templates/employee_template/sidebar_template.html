@@ -1,0 +1,82 @@
+{% load static %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4 rounded shadow custom-stylish-sidebar">
+  <!--<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" >-->
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static "dist/img/user2-160x160.jpg" %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{% url 'employee_profile' %}" class="d-block">{{ user.username }}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            {% url 'employee_home' as employee_home %}
+            <a href="{{ employee_home }}" class="nav-link {% if request.path == employee_home %} active {% endif %}">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'employee_view_attendance' as employee_view_attendance %}
+            {% url 'employee_view_attendance_post' as employee_view_attendance_post %}
+            <a href="{{ employee_view_attendance }}" class="nav-link {% if request.path == employee_view_attendance %} active {% endif %} {% if request.path == employee_view_attendance_post %} active {% endif %}">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                View Attendance
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'employee_apply_leave' as employee_apply_leave %}
+            <a href="{{ employee_apply_leave }}" class="nav-link {% if request.path == employee_apply_leave %} active {% endif %}">
+              <i class="nav-icon fas fa-calendar-plus"></i>
+              <p>
+                Apply for Leave
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'employee_feedback' as employee_feedback %}
+            <a href="{{ employee_feedback }}" class="nav-link {% if request.path == employee_feedback %} active {% endif %}">
+              <i class="nav-icon fas fa-comment-alt"></i>
+              <p>
+                Feedback Message
+              </p>
+            </a>
+          </li>
+          <!--<li class="nav-item">
+            {% url 'employee_view_result' as employee_view_result %}
+            <a href="{{ employee_view_result }}" class="nav-link {% if request.path == employee_view_result %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Grade Card
+              </p>
+            </a>
+          </li>-->
+          <li class="nav-item">
+            {% url 'employee_all_notification' as employee_all_notification %}
+            <a href="{{ employee_all_notification }}" class="nav-link {% if request.path == employee_all_notification %} active {% endif %}">
+              <i class="nav-icon fas fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
