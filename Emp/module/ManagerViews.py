@@ -308,8 +308,8 @@ def edit_client_save(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")
     else:
-        client_id=request.POST.get("subject_id")
-        client_name=request.POST.get("subject_name")
+        client_id=request.POST.get("client_id")
+        client_name=request.POST.get("client_name")
         tl_id=request.POST.get("staff")
         project_id=request.POST.get("course")
 
@@ -323,21 +323,21 @@ def edit_client_save(request):
             client.save()
 
             messages.success(request,"Successfully Edited Subject")
-            return HttpResponseRedirect(reverse("edit_subject",kwargs={"subject_id":client_id}))
+            return HttpResponseRedirect(reverse("edit_client",kwargs={"client_id":client_id}))
         except:
             messages.error(request,"Failed to Edit Subject")
-            return HttpResponseRedirect(reverse("edit_subject",kwargs={"subject_id":client_id}))
+            return HttpResponseRedirect(reverse("edit_client",kwargs={"client_id":client_id}))
 
 
 def edit_project(request,project_id):
     project=Project.objects.get(id=project_id)
-    return render(request,"manager_template/edit_project_template.html",{"course":project,"id":project_id})
+    return render(request,"manager_template/edit_project_template.html",{"project":project,"id":project_id})
 
 def edit_project_save(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")
     else:
-        project_id=request.POST.get("course_id")
+        project_id=request.POST.get("project_id")
         project_name=request.POST.get("course")
 
         try:
@@ -346,10 +346,10 @@ def edit_project_save(request):
             project.project_name=project_name
             project.save()
             messages.success(request,"Successfully Edited Course")
-            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":project_id}))
+            return HttpResponseRedirect(reverse("edit_project",kwargs={"project_id":project_id}))
         except:
             messages.error(request,"Failed to Edit Course")
-            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":project_id}))
+            return HttpResponseRedirect(reverse("edit_project",kwargs={"project_id":project_id}))
 
 
 def manage_session(request):
