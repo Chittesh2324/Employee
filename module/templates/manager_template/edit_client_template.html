@@ -19,23 +19,23 @@ Edit Client | Client ID : {{ client.id }}
                   {% csrf_token %}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Subject Name </label>
-                    <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject" value="{{ subject.subject_name }}">
-                    <input type="hidden" class="form-control" name="subject_id" placeholder="Enter Subject" value="{{ subject.id }}">
+                    <label>Client Name </label>
+                    <input type="text" class="form-control" name="client_name" placeholder="Enter Client" value="{{ client.client_name }}">
+                    <input type="hidden" class="form-control" name="client_id" placeholder="Enter Client" value="{{ client.id }}">
                   </div>
                    <div class="form-group">
                     <label>Project </label>
                     <select class="form-control" name="course">
                         {% for course in project %}
-                              <option value="{{ course.id }}" {% if course.id == client.course_id.id %} selected {% endif %}>{{ course.course_name }}</option>
+                              <option value="{{ course.id }}" {% if course.id == client.course_id.id %} selected {% endif %}>{{ course.project_name }}</option>
                         {% endfor %}
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Staff</label>
+                    <label>TL</label>
                     <select class="form-control" name="staff">
                         {% for staff in tl %}
-                          <option value="{{ TL.id }}" {% if staff.id == client.staff_id.id %} selected {% endif %}>{{ staff.first_name }} {{ staff.last_name }}</option>
+                          <option value="{{ staff.id }}" {% if staff.id == client.staff_id.id %} selected {% endif %}>{{ staff.first_name }} {{ staff.last_name }}</option>
                         {% endfor %}
                     </select>
                   </div>

@@ -1,6 +1,6 @@
 {% extends 'manager_template/base_template.html' %}
 {% block page_title %}
-Edit Course |  Course ID : {{ course.id }}
+Edit Project |  Project ID : {{ course.id }}
 {% endblock page_title %}
 {% block main_content %}
     <!-- Main content -->
@@ -20,7 +20,7 @@ Edit Course |  Course ID : {{ course.id }}
                 <div class="card-body">
                   <div class="form-group">
                     <label>Course Name </label>
-                    <input type="text" class="form-control" name="course" placeholder="Enter Course" value="{{ course.course_name }}">
+                    <input type="text" class="form-control" name="course" placeholder="Enter Course" value="{{ course.project_name }}">
                     <input type="hidden"  name="course_id"  value="{{ course.id }}">
                   </div>
                    <div class="form-group">
