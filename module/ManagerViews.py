@@ -85,11 +85,11 @@ def add_TL_save(request):
             user=CustomUser.objects.create_user(username=username,password=password,email=email,last_name=last_name,first_name=first_name,user_type=2)
             user.staffs.address=address
             user.save()
-            messages.success(request,"Successfully Added Staff")
-            return HttpResponseRedirect(reverse("add_staff"))
+            messages.success(request,"Successfully Added TL")
+            return HttpResponseRedirect(reverse("add_TL"))
         except:
-            messages.error(request,"Failed to Add Staff")
-            return HttpResponseRedirect(reverse("add_staff"))
+            messages.error(request,"Failed to Add TL")
+            return HttpResponseRedirect(reverse("add_TL"))
 
 def add_project(request):
     return render(request,"manager_template/add_project_template.html")
@@ -126,7 +126,7 @@ def add_employee_save(request):
             password=form.cleaned_data["password"]
             address=form.cleaned_data["address"]
             session_year_id=form.cleaned_data["session_year_id"]
-            project_id=form.cleaned_data["course"]
+            project_id=form.cleaned_data["project"]
             sex=form.cleaned_data["sex"]
 
             profile_pic=request.FILES['profile_pic']
@@ -144,11 +144,11 @@ def add_employee_save(request):
                 user.employee.gender=sex
                 user.employee.profile_pic=profile_pic_url
                 user.save()
-                messages.success(request,"Successfully Added Student")
-                return HttpResponseRedirect(reverse("add_student"))
+                messages.success(request,"Successfully Added Employee")
+                return HttpResponseRedirect(reverse("add_employee"))
             except:
-                messages.error(request,"Failed to Add Student")
-                return HttpResponseRedirect(reverse("add_student"))
+                messages.error(request,"Failed to Add Employee")
+                return HttpResponseRedirect(reverse("add_employee"))
         else:
             form=AddEmployeeForm(request.POST)
             return render(request, "manager_template/add_employee_template.html", {"form": form})
